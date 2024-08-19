@@ -5,7 +5,7 @@ metadata:
   namespace: default
 data:
   POSTGRES_DB: postgres
-  POSTGRES_HOST: khanhbvdatabase.cxqu6mq4syvw.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: database-1.cxqu6mq4syvw.us-east-1.rds.amazonaws.com
   AWS_REGION: us-east-1
   AWS_PROFILE: default
   AWS_BUCKET: khanhbv-bucket
