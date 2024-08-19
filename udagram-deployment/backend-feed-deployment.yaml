@@ -2,26 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-feed
+  labels:
+    app: backend-feed
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      run: backend-feed
-  replicas: 2
+      app: backend-feed
   template:
     metadata:
       labels:
-        run: backend-feed
+        app: backend-feed
     spec:
       containers:
       - name: backend-feed
-        image: docker.io/kazekagegarra/udagram-api-feed
+        image: kazekagegarra/udagram-api-feed:0.1.5
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
-          limits:
-            cpu: 500m
           requests:
-            cpu: 200m
+            cpu: 256m
+          limits:
+            cpu: 512m
         env:
         - name: URL
           valueFrom:
@@ -72,7 +74,6 @@ spec:
         - name: aws-secret
           mountPath: "/root/.aws/"
           readOnly: true        
-      restartPolicy: Always
       volumes:
       - name: aws-secret
         secret:
